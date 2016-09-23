@@ -13,9 +13,7 @@
 			if ($_POST ["mensajenuevo"]!="" ){ {
 				$usuario = $_SESSION ["Usuario"];
 				$mensaje = $_POST ["mensajenuevo"];	
-				//$conexion = new PDO("mysql:host=localhost", "root", "");
 				$conexion = new mysqli("localhost", "root", "");
-				//$conexion->exec('USE foro');
 				$conexion->select_db('foro');
 				$sql = "INSERT INTO mensajes (usuario, fechahora, mensaje) values ('$usuario',now(),'$mensaje');";
 				$conexion->query($sql);
@@ -37,7 +35,7 @@
 						print "<a class='btn btn-default' href='index.php' role='button'>Entrar con otro usuario</a>";
 						print "<br/><br/>";
 						print "<a class='btn btn-default' href='foro.php' role='button'>Volver al foro</a>";
-						}
+					}
 			}
 		?>
 		</div>
