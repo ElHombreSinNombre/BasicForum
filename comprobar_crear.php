@@ -14,13 +14,10 @@
 				$usuarionuevo=$_POST ["usuario"];
 				$clavenuevo=$_POST["clave"];
 				$tipo=$_POST["opciones"];
-				//$conexion = new PDO("mysql:host=localhost", "root", "");
 				$conexion = new mysqli("localhost", "root", "");
-				//$conexion->exec('USE foro');
 				$conexion->select_db('foro');
 				$sql = "INSERT INTO usuarios (usuario, clave, tipo) values ('$usuarionuevo','$clavenuevo','$tipo');";
 				$conexion->query($sql);
-				//$conexion=null;
 				$conexion->close();
 				print "<div class='alert alert-success'><b>Correcto:</b> Operación realizada satisfactoriamente sobre la tabla de mensaje con fecha/hora " . date ( "d/m/Y H:i:s" ) . "<br/></div>";
 				print "<br/><br/>";
