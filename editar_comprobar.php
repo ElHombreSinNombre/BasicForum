@@ -12,13 +12,10 @@
 			if (isset($_POST ["editar"])){
 			if ($_POST ["editar"]!="" ){ {
 				$editar = $_POST ["editar"];
-				//$conexion = new PDO("mysql:host=localhost", "root", "");
 				$conexion = new mysqli("localhost", "root", "");
-				//$conexion->exec('USE foro');
 				$conexion->select_db('foro');
 				$sql = "UPDATE mensajes set mensaje='".$editar."' where idmensaje='".$_SESSION['idMensaje']."'";
 				$conexion->query($sql);
-				//$conexion=null;
 				$conexion->close();
 				print "<div class='alert alert-success'><b>Correcto:</b> Operación realizada satisfactoriamente</div>";
 				print "<br/><br/>";
