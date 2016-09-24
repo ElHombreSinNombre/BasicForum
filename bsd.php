@@ -21,9 +21,9 @@
 		 }
 		</style>
 	</head>
-	<body>
-		<div class="progress progress-striped active">
-			<div id="loadbar" class="progress-bar" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0%;"> <a>Cargando</a></div>	
+<body>
+	<div class="progress progress-striped active">
+		<div id="loadbar" class="progress-bar" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0%;"> <a>Cargando</a></div>	
 		</div>
 		<?php
 		$crearBsd="Create database foro;";
@@ -51,15 +51,15 @@
 		$conexion->query($crearUsuario1);
 		$conexion->query($crearUsuario2);
 		?>
-	</body>
-	<script>
-		var contador = 0;
-		setInterval(function () {
-			contador++;
-			document.getElementById('loadbar').style.width = contador + '%';
-			if(contador == 150){
-				window.location.href = 'index.php';
-			}
-		}, 40);
-	</script>
+</body>
+<script>
+	var contador = 0;
+	setInterval(function () {
+	contador++;
+	document.getElementById('loadbar').style.width = contador + '%';
+	if(contador == 150){
+		window.location.href = 'index.php';
+		}
+	}, 40);
+</script>
 </html>
