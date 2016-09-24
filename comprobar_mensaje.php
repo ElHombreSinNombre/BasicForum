@@ -3,8 +3,8 @@
 		<title>Registro</title>
 		<link rel="StyleSheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
 	</head>
-	<body>
-	   <div class="col-md-4 col-md-offset-4">   	
+<body>
+	<div class="col-md-4 col-md-offset-4">   	
 		<?php
 			session_start ();
 			print "Usuario: <b>" . $_SESSION ["Usuario"] . "</b> - Tipo: " . $_SESSION ["Tipo"]. "</b>";
@@ -38,7 +38,7 @@
 					}
 			}
 		?>
-		</div>
-	</body>
+	</div>
+</body>
 </html>
 
