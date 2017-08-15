@@ -13,13 +13,12 @@
 			if ($_POST ["mensajenuevo"]!="" ){ {
 				$usuario = $_SESSION ["Usuario"];
 				$mensaje = $_POST ["mensajenuevo"];	
-				$conexion = new mysqli("localhost", "root", "");
-				$conexion->select_db('foro');
+				$conexion = new PDO("mysql:host=localhost", "root", "");
+				$conexion->query('use foro');
 				$sql = "INSERT INTO mensajes (usuario, fechahora, mensaje) values ('$usuario',now(),'$mensaje');";
 				$conexion->query($sql);
-				//$conexion=null;
-				$conexion->close();
-				print "<div class='alert alert-success'><b>Correcto:</b> Operaci�n realizada satisfactoriamente</div>";
+				$conexion=null;
+				print "<div class='alert alert-success'><b>Correcto:</b> Operación realizada satisfactoriamente sobre la tabla de mensajes con fecha/hora " . date ( "d/m/Y H:i:s" ) . "		<br/></div>";
 				print "<br/><br/>";
 				print "<a class='btn btn-default'<a href='mensaje.php' role='button'>Volver a insertar otro usuario nuevo</a>";
 				print "<br/><br/>";

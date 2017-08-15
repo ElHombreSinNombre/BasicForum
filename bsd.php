@@ -3,11 +3,7 @@
 	<head>
 		<title>Inicio</title>
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-		<link rel="stylesheet" type="text/css" href="http://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
 		<style>
-		progress {
-    		position: relative;
-		}
 		.progress a {
 		    position: absolute;
 		    display: block;
@@ -30,18 +26,16 @@
 		$crearTablaMensajes="Create Table if not exists mensajes (idmensaje int auto_increment, usuario varchar(30) not null, fechahora datetime not null, mensaje varchar(30) not null, primary key (idmensaje));";
 		$crearMensaje1="Insert into mensajes (usuario, fechahora, mensaje) values ('Asier', now(), 'Like')";
 		$crearMensaje2="Insert into mensajes (usuario, fechahora, mensaje) values ('Lara', now(), 'ForeverAndEver');";
-		$crearTablaUsuario="Create Table if not exists usuarios (usuario varchar(30) not null, clave varchar(30) not null, tipo varchar(8) not null, primary key (usuario));";
-		$crearUsuario1="Insert into usuarios (usuario, clave, tipo) values ('Admin', 'Prueba', 'admin');";
-		$crearUsuario2="Insert into usuarios (usuario, clave, tipo) values ('User', 'Prueba', 'user');";
+		$crearTablaUsuario="Create Table if not exists usuarios (usuario varchar(30) not null, clave varchar(255) not null, tipo varchar(8) not null, primary key (usuario));";
+		$hash=password_hash('Prueba',PASSWORD_DEFAULT);
+		$crearUsuario1="Insert into usuarios (usuario, clave, tipo) values ('Admin','$hash','admin');";
+		$crearUsuario2="Insert into usuarios (usuario, clave, tipo) values ('User','$hash','user');";
 
-		//$conexion = new PDO("mysql:host=localhost", "root", "");
-		$conexion = new mysqli("localhost", "root", "");
+		$conexion = new PDO("mysql:host=localhost", "root", "");
 
-		//mysql_query ( $crearBsd);
 		$conexion->query($crearBsd);
 
-		//$conexion->exec('USE foro');
-		$conexion->select_db('foro');
+		$conexion->query('use foro');
 
 		$conexion->query($crearTablaMensajes);
 		$conexion->query($crearTablaUsuario);

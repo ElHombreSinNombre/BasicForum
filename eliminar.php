@@ -10,11 +10,11 @@
 			session_start ();
 			print "Usuario: <b>" . ($_SESSION ["Usuario"]) . "</b> - Tipo: <b>" . ($_SESSION ["Tipo"]) . "</b>.";
 			print "<hr>";
-			$conexion = new mysqli("localhost", "root", "");
-			$conexion->select_db('foro');
+			$conexion = new PDO("mysql:host=localhost", "root", "");
+			$conexion->query('use foro');
 			$sql = "DELETE from mensajes where idMensaje=".$eliminar; 
 			$conexion -> query ($sql);
-			$conexion->close();
+			$conexion=null;
 			print "<div class='alert alert-success'><b>Correcto:</b> Operación realizada satisfactoriamente</div>";
 			print "<br/><br/>";
 			print "<a class='btn btn-default' href='index.php' role='button'>Entrar con otro usuario</a> <a class='btn btn-default' href='foro.php'>Volver al foro</a>";		

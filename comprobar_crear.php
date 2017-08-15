@@ -12,14 +12,14 @@
 		if (isset ( $_POST ["boton"]) ) {
 			if ($_POST ["usuario"]!="" && $_POST["clave"]!="" && isset($_POST["opciones"]) ){ 
 				$usuarionuevo=$_POST ["usuario"];
-				$clavenuevo=$_POST["clave"];
+				$clavenuevo=password_hash($_POST["clave"],PASSWORD_DEFAULT);
 				$tipo=$_POST["opciones"];
-				$conexion = new mysqli("localhost", "root", "");
-				$conexion->select_db('foro');
+				$conexion = new PDO("mysql:host=localhost", "root", "");
+				$conexion->query('use foro');
 				$sql = "INSERT INTO usuarios (usuario, clave, tipo) values ('$usuarionuevo','$clavenuevo','$tipo');";
 				$conexion->query($sql);
-				$conexion->close();
-				print "<div class='alert alert-success'><b>Correcto:</b> Operación realizada satisfactoriamente sobre la tabla de mensaje con fecha/hora " . date ( "d/m/Y H:i:s" ) . "<br/></div>";
+				$conexion=null;
+				print "<div class='alert alert-success'><b>Correcto:</b> Operación realizada satisfactoriamente sobre la tabla de usuarios con fecha/hora " . date ( "d/m/Y H:i:s" ) . "<br/></div>";
 				print "<br/><br/>";
 				print "<div class='btn btn-default'<a href='crear.php' role='button'>Volver a insertar otro usuario nuevo</a></div>";
 				print "<br/><br/>";

@@ -13,10 +13,10 @@
 		?>
 		<form name="form" method="post" action="editar_comprobar.php">
 			<div class="form-group">
-			   	<label for="editar">Editar</label>
+			   	<label for="editar">Editar mensaje</label>
 				<textarea class="form-control"  name="editar" rows="15" cols="40"></textarea>
 			</div>
-		<input type="submit" class="btn btn-default" value="Añadir"	name="boton"><br />
+		<input type="submit" class="btn btn-default" value="Editar"	name="boton"><br />
 		</form>
 		<a class="btn btn-default" href="index.php" role="button">Entrar con otro usuario</a>
 		<br /> <br /> 
