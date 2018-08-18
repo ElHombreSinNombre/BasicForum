@@ -1,11 +1,17 @@
 <html>
+
 	<head>
-		<title>Registro</title>
-		<link rel="StyleSheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+		<title>Messages</title>
+		<link rel="stylesheet" type="text/css" href="css/bootstrap.css">
 	</head>
-<body>
-	<div class="col-md-4 col-md-offset-4">	
-		<?php
+
+	<body>
+		<div class="container">
+			<div class="row h-100 justify-content-center align-items-center">
+				<div class="col-md-8">
+					<div class="card">
+						<div class="card-body">
+							<?php
 			session_start ();
 			$conexion = new PDO("mysql:host=localhost", "root", "");
 			$conexion->query('use foro');
@@ -22,31 +28,39 @@
 					}
 				}
 			}
-			print "Usuario: <b>" . $_SESSION ["Usuario"] . "</b> - Tipo: <b>" . $_SESSION ["Tipo"]."</b>";
+			print "User: <b>" . $_SESSION ["Usuario"] . "</b> - Type: <b>" . $_SESSION ["Tipo"]."</b>";
 			print "<hr>";
 			$sql = "select * from mensajes";
 			$total = $conexion -> prepare ( $sql );
 			$total->execute();
 			$contador =  $total -> rowCount();
-			print "<div class='alert alert-info'>Hay <b>" . $contador . "</b> mensaje/s en el foro</div>";
+			print "<div class='alert alert-info'>There are <b>" . $contador . "</b> message/s</div>";
 			$total=$conexion->query($sql);
 			while ( $row =  $total -> fetch() ) {
-				print "<b>ID</b> " . $row ["idmensaje"] . " - <b>Usuario</b> " . $row ["usuario"] . " - <b>Fecha y hora</b> " . $row ["fechahora"] . " - <b>Mensaje</b> " . $row ["mensaje"] . "</br>";
-				if ($_SESSION ["Tipo"]=='admin'){	
-					print "<br><form action='eliminar.php' method='POST'><input type='hidden' name='hiddenid' value='" . $row ["idmensaje"] . "'><input type='submit' class='btn btn-danger' value='Eliminar'></form>";
-					print "<form action='editar.php' method='POST'><input type='hidden' name='hiddenid' value='" . $row ["idmensaje"] . "'><input type='submit' class='btn btn-default' value='Editar'></form><br>";
+				print "<b>ID</b> " . $row ["idmensaje"] . " - <b>User</b> " . $row ["usuario"] . " - <b>Date</b> " . $row ["fechahora"] . " - <b>Message</b> " . $row ["mensaje"] . "</br>";
+				if ($_SESSION ["Tipo"]=='Admin'){	
+					print "<br><form action='eliminar.php' method='POST'><input type='hidden' name='hiddenid' value='" . $row ["idmensaje"] . "'><input type='submit' class='btn btn-danger' value='Delete'></form>";
+					print "<form action='editar.php' method='POST'><input type='hidden' name='hiddenid' value='" . $row ["idmensaje"] . "'><input type='submit' class='btn btn-default' value='Edit'></form><br>";
 				}
 			}
-			print "<hr><h2>Menú de opciones</h2>";
-			if ($_SESSION ["Tipo"]=='admin'){
-				print "<br/><a class='btn btn-default' href='crear.php' role='button'>Crear nuevo usuario</a><br /> <br />";
+			print "<hr><h2>Options</h2>";
+			if ($_SESSION ["Tipo"]=='Admin'){
+				print "<a class='btn btn-default' href='crear.php' role='button'>Create new user</a><br />";
 			}
-			if ($_SESSION ["Tipo"]=='admin' || $_SESSION ["Tipo"]=='user'){
-				print "<a class='btn btn-default' href='mensaje.php' role='button'>Insertar mensaje</a><br /> <br />";
+			if ($_SESSION ["Tipo"]=='Admin' || $_SESSION ["Tipo"]=='user'){
+				print "<a class='btn btn-default' href='mensaje.php' role='button'>Add message</a><br />";
 			}
 			$conexion=null;
 		?>
-		<a class="btn btn-default" href="index.php" role="button">Entrar con otro usuario</a><br /> <br />
-	</div>
-</body>
+								<a class="btn btn-default" href="index.php" role="button">
+									Enter as another user</a>
+								<br />
+								<br />
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</body>
+
 </html>

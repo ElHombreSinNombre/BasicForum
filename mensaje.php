@@ -1,24 +1,32 @@
 <html>
 <head>
 	<title>Registro</title>
-	<link rel="StyleSheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" >
+	<link rel="stylesheet" type="text/css" href="css/bootstrap.css">
 </head>
 <body>
-	<div class="col-md-4 col-md-offset-4">	
+<div class="container">
+			<div class="row h-100 justify-content-center align-items-center">
+				<div class="col-md-8">
+					<div class="card">
+						<div class="card-body">
 	<?php
 		session_start ();
-		print "Usuario: <b>" . $_SESSION ["Usuario"] . "</b> - Tipo: <b>" . $_SESSION ["Tipo"]."</b>";
+		print "User: <b>" . $_SESSION ["Usuario"] . "</b> - Type: <b>" . $_SESSION ["Tipo"]."</b>";
 		print "<hr>";
 	?>
 	<form name="form" method="post" action="comprobar_mensaje.php">
 		<div class="form-group">
-		   	<label for="mensajenuevo">Mensaje</label>
+		   	<label for="mensajenuevo">Message</label>
 			<textarea class="form-control"  name="mensajenuevo" rows="15" cols="40"></textarea>
 		 </div>
-		<input type="submit" class="btn btn-default" value="Añadir" name="boton"><br />
+		<input type="submit" class="btn btn-primary" value="Add" name="boton"><br />
 	</form>
-	<a class="btn btn-default" href="index.php" role="button">Entrar con otro usuario</a><br /> <br /> <a class="btn btn-default" href="foro.php" role="button">Volver al foro</a>
+	<a class="btn btn-default" href="index.php" role="button">Enter as another user</a><br /> <a class="btn btn-default" href="foro.php" role="button">Return to list</a>
 	</div>
+					</div>
+				</div>
+			</div>
+		</div>
 </body>
 </html>
 

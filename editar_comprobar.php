@@ -1,13 +1,19 @@
 <html>
+
 	<head>
-		<title>Registro</title>
-		<link rel="StyleSheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+		<title>Edit user</title>
+		<link rel="stylesheet" type="text/css" href="css/bootstrap.css">
 	</head>
-<body>
-	<div class="col-md-4 col-md-offset-4">			
-		<?php
+
+	<body>
+		<div class="container">
+			<div class="row h-100 justify-content-center align-items-center">
+				<div class="col-md-4">
+					<div class="card">
+						<div class="card-body">
+							<?php
 			session_start ();
-			print "Usuario: <b>" . $_SESSION ["Usuario"] . "</b> - Tipo: <b>" . $_SESSION ["Tipo"]."</b>";
+			print "User: <b>" . $_SESSION ["Usuario"] . "</b> - Type: <b>" . $_SESSION ["Tipo"]."</b>";
 			print "<hr>";
 			if (isset($_POST ["editar"])){
 			if ($_POST ["editar"]!="" ){ {
@@ -17,26 +23,29 @@
 				$sql = "UPDATE mensajes set mensaje='".$editar."' where idmensaje='".$_SESSION['idMensaje']."'";
 				$conexion->query($sql);
 				$conexion=null;
-				print "<div class='alert alert-success'><b>Correcto:</b> Operación realizada satisfactoriamente</div>";
-				print "<br/><br/>";
-				print "<a class='btn btn-default'<a href='mensaje.php' role='button'>Volver a insertar otro usuario nuevo</a>";
-				print "<br/><br/>";
-				print "<a class='btn btn-default' href='index.php' role='button'>Entrar con otro usuario</a>";
-				print "<br/><br/>";
-				print "<a class='btn btn-default' a href='foro.php'>Volver al foro</a>";
+				print "<div class='alert alert-success'><b>Success:</b> The message was edited</div>";
+				print "<a class='btn btn-default'<a href='mensaje.php' role='button'>Create another user</a>";
+				print "<br/>";
+				print "<a class='btn btn-default' href='index.php' role='button'>Enter as another user</a>";
+				print "<br/>";
+				print "<a class='btn btn-default' a href='foro.php'>Return to list</a>";
 			}
 				}else{
-					print "<a class='alert alert-danger'><b>Error:</b> Necesita tener algo escrito en el mensaje para poder insertarlo</a></div>";
-					print "<br/><br/>";
-					print "<a class='btn btn-default' href='editar.php' role='button'>Volver a intentarlo</a>";
-					print "<br/><br/>";
-					print "<a class='btn btn-default' href='`index.php' role='button'>Entrar con otor usuario</a>";
-					print "<br/><br/>";
-					print "<a class='btn btn-default' href='foro.php' role='button'>Volver al foro</a>";
+					print "<div class='alert alert-danger'><b>Error:</b> The message is required</a></div>";
+					print "<a class='btn btn-default' href='editar.php' role='button'>Retry</a>";
+					print "<br/>";
+					print "<a class='btn btn-default' href='`index.php' role='button'>Enter as another user</a>";
+					print "<br/>";
+					print "<a class='btn btn-default' href='foro.php' role='button'>Return to list</a>";
 
 				}
 			}
 		?>
-	</div>
-</body>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</body>
+
 </html>
